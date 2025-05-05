@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "868375656670",
+    "project_id": "medical-e6ee2",
+    "storage_bucket": "medical-e6ee2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868375656670:android:e0f9b0aa9988bf91c66a4f",
+        "android_client_info": {
+          "package_name": "com.example.shopsmart_users_ar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUwSGw4kpB4ZLI8fqN1uzrplbXz5Wf4pk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,2 @@
+C:/Users/DELL/AndroidStudioProjects/Udemy/shopsmart_users_ar/android/app/.cxx/RelWithDebInfo/432y7319/x86/CMakeFiles/edit_cache.dir
+C:/Users/DELL/AndroidStudioProjects/Udemy/shopsmart_users_ar/android/app/.cxx/RelWithDebInfo/432y7319/x86/CMakeFiles/rebuild_cache.dir
