@@ -114,12 +114,7 @@ class _LoginpageState extends State<Loginpage> {
                       isPassword: true,
                       maxLines: 1,
                       hint: "Password",
-                      onValidate: (value) {
-                        if (value == null || value.trim().isEmpty) {
-                          return "plz enter your password address";
-                        }
-                        return null;
-                      },
+                      onValidate: (value) =>Validations.validatePassword(value ?? ''),
                       hintColor:  AppColors.gray,
                       prefixIcon: Icon(Icons.lock,color: AppColors.gray,),
                     ),

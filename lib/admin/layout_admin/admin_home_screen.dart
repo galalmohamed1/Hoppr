@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:Hoppr/consts/app_colors.dart';
 import 'package:Hoppr/presentation/widgets/app_name_text.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:shopsmart_users_ar/providers/theme_provider.dart';
 
 class AdminHomeScreen extends ConsumerStatefulWidget {
   const AdminHomeScreen({super.key});
