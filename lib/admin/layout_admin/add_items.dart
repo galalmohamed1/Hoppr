@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:Hoppr/admin/controller/add_items_controller.dart';
 import 'package:Hoppr/admin/layout_admin/widgets/my_button.dart';
 import 'package:Hoppr/consts/app_colors.dart';
@@ -7,7 +6,6 @@ import 'package:Hoppr/consts/widget/custom_text_field.dart';
 import 'package:Hoppr/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AddItems extends ConsumerWidget {

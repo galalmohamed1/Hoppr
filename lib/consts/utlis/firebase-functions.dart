@@ -64,9 +64,9 @@ class FirebaseFunctions{
           .then((DocumentSnapshot documentSnapshot) {
         if (documentSnapshot.exists) {
           if (documentSnapshot.get('Role') == "Admin") {
-            navigatorKey.currentState!.pushReplacementNamed(PagesRouteName.AdminHome);
+            navigatorKey.currentState!.pushNamedAndRemoveUntil(PagesRouteName.AdminHome, (route) => false,);
           }else{
-            navigatorKey.currentState!.pushReplacementNamed(PagesRouteName.HomePage);
+            navigatorKey.currentState!.pushNamedAndRemoveUntil(PagesRouteName.HomePage, (route) => false,);
           }
         } else {
           print('Document does not exist on the database');

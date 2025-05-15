@@ -24,6 +24,7 @@ class AddItemNotifire extends StateNotifier <AddItemsModel>{
   }
 
   final CollectionReference items=FirebaseFirestore.instance.collection("items");
+  final CollectionReference newOrder=FirebaseFirestore.instance.collection("New_Order");
   final CollectionReference categoryiesCollection =FirebaseFirestore.instance.collection("Category");
 
   Future<void> pickImage() async{
@@ -109,6 +110,45 @@ class AddItemNotifire extends StateNotifier <AddItemsModel>{
         "isDiscounted":state.isDiscounted,
         "discountPercentage":
         state.isDiscounted ? int.tryParse(state.discountpercentage!) : 0,
+      });
+      state=AddItemsModel();
+    }catch(e){
+      throw Exception("Error saving items: $e");
+    }finally{
+      state =state.copyWith(isLoading: false);
+    }
+  }
+
+  Future<void> uploadOrderNotFound(String name,String brand,String description,String phone,String address)async{
+    if(name.isEmpty || brand.isEmpty || state.imagePath == null ||
+         state.Size.isEmpty || description.isEmpty || phone.isEmpty|| address.isEmpty  ){
+      throw Exception("Please fill all the field an upload an image.");
+    }
+    state = state.copyWith(isLoading: true);
+    try{
+      /// upload image to  Supabase storage
+      final fileName = DateTime.now().microsecondsSinceEpoch.toString();
+      final path = 'uploads/$fileName';
+      final response = await supabase.storage
+          .from('image') // your bucket name
+          .upload(
+          path,
+          state.imagePath!
+      ).then((value) => SnackBarService.showSuccessMessage('Image added successfully.'));
+      final imageUrl = supabase.storage
+          .from('image')
+          .getPublicUrl(path);
+      /// save item to firebase
+      final String uid= FirebaseAuth.instance.currentUser!.uid;
+      await newOrder.add({
+        "name":name,
+        "brand":brand,
+        "image":imageUrl,
+        "uploadedBy":uid,
+        "Description":description,
+        "Size":state.Size,
+        "address":address,
+        "phone":phone,
       });
       state=AddItemsModel();
     }catch(e){

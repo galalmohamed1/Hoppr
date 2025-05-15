@@ -15,4 +15,6 @@ class PagesRouteName{
   static const String my_order_screen = "/my_order_screen";
   static const String Admin_order_screen = "/admin_order_screen";
   static const String order_details = "/order_detail";
+  static const String Add_order_not_Found = "/add_order_not_found";
+  static const String View_all_order_not_Found = "/viewed_all_order_not_found";
 }

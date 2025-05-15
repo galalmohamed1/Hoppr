@@ -105,26 +105,20 @@ class ProfileScreen extends ConsumerWidget {
                         navigatorKey.currentState!.pushNamed(PagesRouteName.my_order_screen);
                       },
                       ),
-                     GestureDetector(
+                     ListTile(
                        onTap: () {
                          navigatorKey.currentState!.pushNamed(PagesRouteName.Payment_Screen);
                        },
-                       child: Row(
-                         children: [
-                           SizedBox(width: 18,),
-                           Icon(Icons.payments),
-                           SizedBox(width: 20,),
-                           SubtitleTextWidget(lable: "Payment Method",fontWeight: FontWeight.bold),
-                           Spacer(),
-                           Icon(IconlyLight.arrowRight2),
-                           SizedBox(width: 25,),
-                         ],
-                       ),
+                       leading:Icon(Icons.payments),
+                       title: SubtitleTextWidget(lable: "Payment Method",fontWeight: FontWeight.bold),
+                       trailing: Icon(IconlyLight.arrowRight2),
                      ),
                      CustomListTitle(
                       imagePath: AssetsManager.recent,
-                      text: "About Us",
-                      function: (){},
+                      text: "Add Order Not Found in App",
+                      function: (){
+                        navigatorKey.currentState!.pushNamed(PagesRouteName.Add_order_not_Found);
+                      },
                       ),
                     // CustomListTitle(
                     //   imagePath: AssetsManager.address,
@@ -150,14 +144,14 @@ class ProfileScreen extends ConsumerWidget {
                   //    provider.setDarkTheme(themeValue: value);
                   //  },
                   // ),
-                  const Divider(
-                      thickness: 2,
+                      const Divider(
+                        thickness: 2,
                       ),
-                  TitlesTextWidget(label: "Others"),
-                  CustomListTitle(
-                      imagePath: AssetsManager.privacy,
-                      text: "privacy & Policy",
-                      function: (){},
+                      TitlesTextWidget(label: "Others"),
+                      CustomListTitle(
+                        imagePath: AssetsManager.privacy,
+                        text: "privacy & Policy",
+                        function: (){},
                       ), 
         
                     ],

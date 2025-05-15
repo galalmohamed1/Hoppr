@@ -1,5 +1,7 @@
 import 'dart:developer';
 import 'package:Hoppr/admin/layout_admin/admin_order_screen.dart';
+import 'package:Hoppr/admin/layout_admin/viewed_all_order_not_found.dart';
+import 'package:Hoppr/presentation/layout_user/screen/order_not_found/add_order_not_found.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Hoppr/admin/layout_admin/add_items.dart';
@@ -7,10 +9,7 @@ import 'package:Hoppr/admin/layout_admin/admin_home_screen.dart';
 import 'package:Hoppr/admin/layout_admin/viewed_all_items.dart';
 import 'package:Hoppr/payment/add_payment.dart';
 import 'package:Hoppr/payment/payment_screen.dart';
-import 'package:Hoppr/presentation/cart/cart_screen.dart';
 import 'package:Hoppr/presentation/cart/my_order_screen.dart';
-import 'package:Hoppr/presentation/cart/order_detail.dart';
-import 'package:Hoppr/presentation/layout_user/model/app_model.dart';
 import 'package:Hoppr/presentation/layout_user/screen/root_screen.dart';
 import 'package:Hoppr/presentation/sign/loginpage.dart';
 import 'package:Hoppr/presentation/sign/signup.dart';
@@ -90,6 +89,20 @@ abstract class AppRoutes {
         {
           return MaterialPageRoute(
             builder: (context) =>  AdminOrderScreen(),
+            settings: settings,
+          );
+        }
+        case PagesRouteName.Add_order_not_Found:
+        {
+          return MaterialPageRoute(
+            builder: (context) =>  AddOrderNotFound(),
+            settings: settings,
+          );
+        }
+        case PagesRouteName.View_all_order_not_Found:
+        {
+          return MaterialPageRoute(
+            builder: (context) =>  ViewedAllOrderNotFound(),
             settings: settings,
           );
         }

@@ -3,15 +3,22 @@ import 'dart:io';
 class AddItemsModel {
   final File? imagePath;
   final bool isLoading;
+  final String? brand;
   final String? selectedCategory;
   final List<String> category;
   final List<String> Size;
   final String? Description;
   final bool isDiscounted;
   final String? discountpercentage;
+  final String? address;
+  final String? phone;
+
 
   AddItemsModel({
+        this.address,
+        this.phone,
         this.imagePath,
+        this.brand,
         this.isLoading=false,
         this.selectedCategory,
         this.category= const [],
@@ -30,6 +37,9 @@ class AddItemsModel {
      String? Description,
      bool? isDiscounted,
      String? discountpercentage,
+     String? brand,
+    String? address,
+    String? phone,
   }){
     return AddItemsModel(
       imagePath: imagePath ?? this.imagePath,
@@ -40,6 +50,9 @@ class AddItemsModel {
       Description: Description ?? this.Description,
       isDiscounted: isDiscounted ?? this.isDiscounted,
       discountpercentage: discountpercentage ??this.discountpercentage,
+      brand: brand ?? this.brand,
+      address: address ?? this.address,
+      phone: phone ?? this.phone,
     );
   }
 

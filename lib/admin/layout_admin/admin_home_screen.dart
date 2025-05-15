@@ -145,6 +145,46 @@ class _AdminHomeScreenState extends ConsumerState<AdminHomeScreen> {
                           ))
                     ],
                   ),
+                  Stack(
+                    children: [
+                      CustomListTitle(
+                        imagePath: AssetsManager.recent,
+                        text: "Add Order Not Found in App",
+                        function: (){
+                          navigatorKey.currentState!.pushNamed(PagesRouteName.View_all_order_not_Found);
+                        },
+                      ),
+                      Positioned(
+                          top: 6,
+                          left: 5,
+                          child: StreamBuilder<QuerySnapshot>(
+                              stream: FirebaseFirestore.instance.collection("New_Order").snapshots(),
+                              builder: (context,AsyncSnapshot<QuerySnapshot> snapshot) {
+                                if(snapshot.connectionState == ConnectionState.waiting){
+                                  return Center(child: CircularProgressIndicator(),);
+                                }
+                                if(snapshot.hasError){
+                                  return Text("Error Loading Order.");
+                                }
+                                final orderCount = snapshot.data?.docs.length;
+                                return CircleAvatar(
+                                  radius: 9,
+                                  backgroundColor: Colors.red,
+                                  child: Center(
+                                    child: Text(
+                                      orderCount.toString(),
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 13,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }
+                          ))
+                    ],
+                  ),
                   CustomListTitle(
                     imagePath: AssetsManager.recent,
                     text: "Viewed All Add Items",
@@ -152,43 +192,13 @@ class _AdminHomeScreenState extends ConsumerState<AdminHomeScreen> {
                       navigatorKey.currentState!.pushNamed(PagesRouteName.Admin_Viewed_all_Items);
                     },
                   ),
-                  // CustomListTitle(
-                  //   imagePath: AssetsManager.address,
-                  //   text: "Address",
-                  //   function: (){},
-                  // ),
-                  // const Divider(
-                  //   thickness: 2,
-                  // ),
-                  // const SizedBox(
-                  //   height: 20,
-                  // ),
-                  // TitlesTextWidget(label: "Settings"),
-                  // // SwitchListTile(
-                  // //   secondary: Image.asset(
-                  // //     AssetsManager.theme,
-                  // //     height: 30,
-                  // //   ),
-                  // //   title: Text(
-                  // //       provider.getIsDarkTheme ? "Dark mode": "Light mode"),
-                  // //
-                  // //   value: provider.getIsDarkTheme,
-                  // //   onChanged: (value){
-                  // //     provider.setDarkTheme(themeValue: value);
-                  // //   },
-                  // // ),
+
                   const Divider(
                     thickness: 2,
                   ),
                   const SizedBox(
                     height: 30,
                   ),
-                  // TitlesTextWidget(label: "Others"),
-                  // CustomListTitle(
-                  //   imagePath: AssetsManager.privacy,
-                  //   text: "privacy & Policy",
-                  //   function: (){},
-                  // ),
 
                 ],
               ),
