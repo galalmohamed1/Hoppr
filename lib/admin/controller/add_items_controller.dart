@@ -76,10 +76,10 @@ class AddItemNotifire extends StateNotifier <AddItemsModel>{
     }
   }
 /// upload and save the items
-  Future<void> uploadAndSaveItems(String name,String price,String description)async{
+  Future<void> uploadAndSaveItems(String name,String price,String description, String discountpercentage)async{
     if(name.isEmpty || price.isEmpty || state.imagePath == null ||
         state.selectedCategory == null || state.Size.isEmpty ||
-        description.isEmpty || (state.isDiscounted && state.discountpercentage == null ) ){
+        description.isEmpty || (state.isDiscounted && discountpercentage.isEmpty == null ) ){
       throw Exception("Please fill all the field an upload an image.");
     }
     state = state.copyWith(isLoading: true);
@@ -109,7 +109,7 @@ class AddItemNotifire extends StateNotifier <AddItemsModel>{
         "Size":state.Size,
         "isDiscounted":state.isDiscounted,
         "discountPercentage":
-        state.isDiscounted ? int.tryParse(state.discountpercentage!) : 0,
+        state.isDiscounted ? int.tryParse(discountpercentage) : 0,
       });
       state=AddItemsModel();
     }catch(e){

@@ -61,7 +61,7 @@ Widget build(BuildContext context, WidgetRef ref) {
                     borderRadius: BorderRadius.circular(10),
                     child: Image.file(
                       state.imagePath!,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fitWidth,
                     ),
                   ),
                 ):state.isLoading?
@@ -233,6 +233,7 @@ Widget build(BuildContext context, WidgetRef ref) {
                       _nameController.text,
                       _priceController.text,
                       _descriptionController.text,
+                      _discountpercentageController.text,
                   );
                   // await notifire.
                   SnackBarService.showSuccessMessage('Items added successfully.');
