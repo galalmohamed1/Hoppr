@@ -1,3 +1,5 @@
+import 'package:Hoppr/consts/routes/app_routes_name.dart';
+import 'package:Hoppr/main.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -90,8 +92,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           streamSnapshot.data!.docs.length,
                               (index) => InkWell(
                             onTap: () {
-                              // final filterItems = EcommerceApp.where(
-                              //         (item) => item.category.toLowerCase() == fcategory[index].name.toLowerCase()).toList();
                               Navigator.push(context,
                                 MaterialPageRoute(
                                   builder: (context) =>  CategoryItems(
@@ -138,14 +138,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       label: "Curated For You",
                       fontSize: 20,
                     ),
-                    Text(
-                      "See All",
-                      style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 0,
-                      color: AppColors.darkScaffoldColor,
-                    ),)
+                    GestureDetector(
+                      onTap: () {
+                        navigatorKey.currentState!.pushNamed(PagesRouteName.See_all_Data);
+                      },
+                      child: Text(
+                        "See All",
+                        style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 0,
+                        color: AppColors.darkScaffoldColor,
+                      ),),
+                    )
                   ],
                 ),
               ),

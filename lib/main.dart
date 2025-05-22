@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         title: 'Hoppr',
         // theme: Styles.themeData(isDarktheme: themeProvider.getIsDarkTheme, context: context),
         onGenerateRoute: AppRoutes.onGeneratedRoute,
-        // home: SplashScreen(),
+        initialRoute: PagesRouteName.initial,
         navigatorKey: navigatorKey,
         builder: EasyLoading.init(
           builder: BotToastInit(),

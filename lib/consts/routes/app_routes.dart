@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:Hoppr/admin/layout_admin/admin_order_screen.dart';
 import 'package:Hoppr/admin/layout_admin/viewed_all_order_not_found.dart';
 import 'package:Hoppr/presentation/layout_user/screen/order_not_found/add_order_not_found.dart';
+import 'package:Hoppr/presentation/layout_user/screen/see_all_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Hoppr/admin/layout_admin/add_items.dart';
@@ -106,6 +107,13 @@ abstract class AppRoutes {
             settings: settings,
           );
         }
+        case PagesRouteName.See_all_Data:
+        {
+          return MaterialPageRoute(
+            builder: (context) =>  SeeAllData(),
+            settings: settings,
+          );
+        }
 
       // case PagesRouteName.order_details:
       //   {
@@ -136,46 +144,10 @@ abstract class AppRoutes {
             settings: settings,
           );
         }
-      // case PagesRouteName.PageScreen:
-      //   {
-      //     return MaterialPageRoute(
-      //       builder: (context) =>   PageScreen(),
-      //       settings: settings,
-      //     );
-      //
-      //   }
-      // case PagesRouteName.Add_Card:
-      //   {
-      //     return MaterialPageRoute(
-      //       builder: (context) =>  Add_Event(),
-      //       settings: settings,
-      //     );
-      //
-      //   }
-      // case PagesRouteName.Event_editing:
-      //   {
-      //     return MaterialPageRoute(
-      //       builder: (context) => const Eventediting(),
-      //       settings: settings,
-      //     );
-      //
-      //   }
-      // case PagesRouteName.addEventEditing:
-      //   {
-      //     return MaterialPageRoute(
-      //       builder: (context) {
-      //         var event=ModalRoute.of(context)?.settings.arguments as EventDataModel;
-      //         return EventDetailsScreen(eventDataModel: event);
-      //       },
-      //       settings: settings,
-      //
-      //     );
-      //
-      //   }
 
       default:
         return MaterialPageRoute(
-          builder: (context) => const SplashScreen(),
+          builder: (context) => const RootScreen(),
           settings: settings,
         );
     }

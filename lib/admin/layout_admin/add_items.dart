@@ -26,7 +26,7 @@ class AddItems extends ConsumerWidget {
 Widget build(BuildContext context, WidgetRef ref) {
     final supabase = Supabase.instance.client;
   final state = ref.watch(addItemProvider);
-  final notifire = ref.read(addItemProvider.notifier);
+  final notifier = ref.read(addItemProvider.notifier);
 
   return Scaffold(
     backgroundColor: AppColors.lightScaffoldColor,
@@ -56,7 +56,7 @@ Widget build(BuildContext context, WidgetRef ref) {
                 ),
                 child: state.imagePath!= null?
                 GestureDetector(
-                  onTap: notifire.pickImage,
+                  onTap: notifier.pickImage,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Image.file(
@@ -67,7 +67,7 @@ Widget build(BuildContext context, WidgetRef ref) {
                 ):state.isLoading?
                 CircularProgressIndicator()
                     :GestureDetector(
-                  onTap: notifire.pickImage,
+                  onTap: notifier.pickImage,
                   child: const Icon(
                     Icons.camera_alt,
                     size: 30,
@@ -136,7 +136,7 @@ Widget build(BuildContext context, WidgetRef ref) {
                   ),
                 ),
                 onFieldSubmitted:(value) {
-                  notifire.addSize(value);
+                  notifier.addSize(value);
                   _sizeController.clear();
                 },
               ),
@@ -146,7 +146,7 @@ Widget build(BuildContext context, WidgetRef ref) {
               child: Wrap(
                 spacing: 8,
                 children: state.Size.map((size) =>Chip(
-                  onDeleted: () => notifire.removeSize(size),
+                  onDeleted: () => notifier.removeSize(size),
                     label: Text(size),
                 ),
                 ).toList(),
@@ -172,7 +172,7 @@ Widget build(BuildContext context, WidgetRef ref) {
                         value: category,
                         child: Text(category),);
                   }).toList(),
-                  onChanged: notifire.setSelectedCategory,
+                  onChanged: notifier.setSelectedCategory,
               ),
             ),
             SizedBox(height: 10,),
@@ -180,7 +180,7 @@ Widget build(BuildContext context, WidgetRef ref) {
               children: [
                 Checkbox(
                   value: state.isDiscounted,
-                  onChanged: notifire.toggleDiscount,
+                  onChanged: notifier.toggleDiscount,
                 ),
                 const Text("Apply Discount"),
               ],
@@ -229,7 +229,7 @@ Widget build(BuildContext context, WidgetRef ref) {
             ):Center(
               child: MyButton(onTab: () async{
                 try{
-                  await notifire.uploadAndSaveItems(
+                  await notifier.uploadAndSaveItems(
                       _nameController.text,
                       _priceController.text,
                       _descriptionController.text,
